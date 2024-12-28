@@ -140,20 +140,47 @@ void process3(List* list) {
 		list->tail = prev;
 
 }
+void process4(List * list){
+	if (!list || list->head == NULL) {
+		return;
+	}
+	Node * prev = NULL;
+	Node * cur = list->head;
+
+	if((list->head)->data % 3 == 0 ){
+		int c = (list->head)->data / 3 ; 
+		Node * head = my_newNode(c);
+		head->next = list->head;
+		prev = head;
+		list->head = head;
+	}
+	while(cur && cur->next ){
+		prev = cur;
+		cur = cur->next;
+		if(cur->data % 3 == 0){
+			int c = cur->data / 3;
+			Node * inter = my_newNode(c);
+			inter->next = cur;
+			prev->next = inter;
+			prev = inter;
+		}
+	}
+
+}
 
 int main() {
 	List * s = newList();
-	my_append(s,1);
-	my_append(s,-2);
-	my_append(s,0);
-	my_append(s,-4);
-	my_append(s,-5);
-	my_append(s,6);
+	my_append(s,52);
+	my_append(s,11);
+	my_append(s,420);
+	my_append(s,69);
+	my_append(s,777);
 
 	printList(s,MESSAGE_2);
 	//process1(s);
 //	process2(s);
 //	process3(s);
+	process4(s);
 	printList(s,MESSAGE_2);
 	freeList(s);
 	return 0;
