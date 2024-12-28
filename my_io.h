@@ -1,8 +1,7 @@
 #ifndef IO
 #define IO
-#include "my_string.h"
+#include "list.h"
 
 void printList(List * s, const char * cc);
-Err getList(List * s, const char * cc);
 
 #endif
